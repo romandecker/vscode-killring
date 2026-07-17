@@ -1,6 +1,6 @@
 {
   "name": "vscode-killring",
-  "displayName": "Kill Ring",
+  "displayName": "Kill Ring for VSCode & VSCodeVim",
   "description": "Emacs-style kill-ring for VSCode that plays nicely with VSCodeVim: paste the top of the ring, then cycle through history to correct the paste in place.",
   "version": "0.1.1",
   "publisher": "romandecker",
