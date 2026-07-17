@@ -1,0 +1,99 @@
+{
+  "name": "vscode-killring",
+  "displayName": "Kill Ring",
+  "description": "Emacs-style kill-ring for VSCode that plays nicely with VSCodeVim: paste the top of the ring, then cycle through history to correct the paste in place.",
+  "version": "0.1.1",
+  "publisher": "romandecker",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "kill-ring",
+    "killring",
+    "clipboard",
+    "emacs",
+    "vim",
+    "vscodevim",
+    "yank",
+    "paste-pop"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/romandecker/vscode-killring.git"
+  },
+  "homepage": "https://github.com/romandecker/vscode-killring#readme",
+  "bugs": {
+    "url": "https://github.com/romandecker/vscode-killring/issues"
+  },
+  "icon": "icon.png",
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "killring.pastePop",
+        "title": "Kill Ring: Paste Pop (cycle to older entry)"
+      },
+      {
+        "command": "killring.pastePopNext",
+        "title": "Kill Ring: Paste Pop Next (cycle to newer entry)"
+      },
+      {
+        "command": "killring.showRing",
+        "title": "Kill Ring: Show Ring"
+      },
+      {
+        "command": "killring.clear",
+        "title": "Kill Ring: Clear"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "killring.showRing",
+        "key": "alt+y",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Kill Ring",
+      "properties": {
+        "killring.maxSize": {
+          "type": "number",
+          "default": 60,
+          "minimum": 1,
+          "markdownDescription": "Maximum number of entries kept in the kill ring. Oldest entries are evicted first."
+        },
+        "killring.pollInterval": {
+          "type": "number",
+          "default": 250,
+          "minimum": 0,
+          "markdownDescription": "How often (in milliseconds) to poll the system clipboard for changes so that copies which are never pasted are still captured. Set to `0` to disable polling (capture only happens at paste time)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "node esbuild.js --production",
+    "watch": "node esbuild.js --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.97.0",
+    "@vscode/vsce": "^3.2.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}

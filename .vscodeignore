@@ -1,0 +1,16 @@
+.vscode/**
+.github/**
+.claude/**
+.history/**
+src/**
+test/**
+node_modules/**
+.gitignore
+.vscodeignore
+esbuild.js
+tsconfig.json
+vitest.config.ts
+**/*.map
+**/*.ts
+*.vsix
+icon.svg
